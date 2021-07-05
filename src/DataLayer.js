@@ -1,9 +1,11 @@
-import React, { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
-export const StateContext = createContext();
+export const DataLayerContext = createContext();
 
-export const DataLayerContext = ({ initialState, reducer, children }) => (
+export const DataLayer = ({ initialState, reducer, children }) => (
   <DataLayerContext.Provider value={useReducer(reducer, initialState)}>
     {children}
   </DataLayerContext.Provider>
 );
+
+export const useDataLayerValue = () => useContext(DataLayerContext);
